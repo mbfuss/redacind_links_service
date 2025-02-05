@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-// AbbreviateLinks - отправляет оригинальный URL в хранилище и связывает его с укороченным..
+// AbbreviateLinks - отправляет оригинальный URL в хранилище и связывает его с укороченным.
 func (h *Handler) AbbreviateLinks(res http.ResponseWriter, req *http.Request) {
 	err := utils.VerificationRequest("text/plain", res, req)
 	if err != nil {
