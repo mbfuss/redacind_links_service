@@ -41,3 +41,26 @@ internal/handler/ – слой обработки HTTP-запросов (кон�
 internal/service/ – бизнес-логика, отделённая от HTTP.
 
 internal/storage/ – слой работы с хранилищем данных.
+
+url-shortener/
+│── cmd/
+│   └── server/
+│       └── main.go            # Точка входа
+│── internal/
+│   ├── handler/
+│   │   ├── shorten.go         # Обработчик сокращения URL
+│   │   ├── redirect.go        # Обработчик редиректа
+│   │   └── handler.go         # Регистрация обработчиков
+│   ├── storage/
+│   │   ├── memory.go          # Временное хранилище (карта)
+│   │   ├── storage.go         # Интерфейс хранилища
+│   └── service/
+│       ├── shortener.go       # Логика сокращения URL
+│── pkg/
+│   ├── logger/
+│   │   └── logger.go          # Логирование
+│── config/
+│   └── config.go              # Конфигурация (порт, БД и т. д.)
+│── go.mod                     # Модуль Go
+│── go.sum                     # Зависимости
+│── README.md                  # Документация
