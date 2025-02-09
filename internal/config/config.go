@@ -1,13 +1,14 @@
 package config
 
 import (
+	"1_increment_http_server/internal/resource"
 	"fmt"
 	"github.com/joho/godotenv"
 	"os"
 )
 
 type Config struct {
-	Port string
+	ResourceConfig resource.Config
 }
 
 var (
@@ -30,6 +31,8 @@ func Load() *Config {
 		port = "8080"
 	}
 	return &Config{
-		Port: port,
+		ResourceConfig: resource.Config{
+			Port: port,
+		},
 	}
 }
