@@ -13,8 +13,8 @@ func main() {
 	mux := http.NewServeMux()
 	handler.RegisterHandlers(mux)
 
-	fmt.Printf("Запущен сервер на порту %v", cfg.Port)
-	err := http.ListenAndServe(":"+cfg.Port, mux)
+	fmt.Printf("Запущен сервер на порту %v", cfg.ResourceConfig.Port)
+	err := http.ListenAndServe(":"+cfg.ResourceConfig.Port, mux)
 	if err != nil {
 		fmt.Println("Запуск сервера: %w", err)
 	}
