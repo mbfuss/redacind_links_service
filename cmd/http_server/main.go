@@ -1,8 +1,8 @@
 package main
 
 import (
+	"1_increment_http_server/internal/adapters/memory"
 	"1_increment_http_server/internal/providers/memory_provider"
-	"1_increment_http_server/internal/service/memory"
 	"fmt"
 	"log"
 )
