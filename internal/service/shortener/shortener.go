@@ -19,14 +19,17 @@ func New(mp memory_provider.MemoryProvider) *Shortener {
 	}
 }
 
-func (s *Shortener) Shorten(url string) (string, error) {
-	return "", nil
+// ShortenJoin - функция для объединения полного url с коротким.
+func (s *Shortener) ShortenJoin(url string) {
+	shortenLink := randStr(6)
+	s.mp.SetValueMemory(shortenLink, url)
 }
 
+// randStr - функция генерации случайного короткого адреса.
 func randStr(n int) string {
 	b := make([]byte, n)
 	for i := range b {
-		// randomly select 1 character from given charset
+		// Случайно выбирает символ из charset.
 		b[i] = charset[rand.Intn(len(charset))]
 	}
 	return string(b)
