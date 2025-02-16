@@ -25,6 +25,7 @@ func (p *MemoryProvider) GetValueMemory(memoryKeyId string) (string, error) {
 	}
 	return value, nil
 }
+
 func (p *MemoryProvider) SetValueMemory(key string, value string) {
 	p.ma.SetValueMemory(key, value)
 }

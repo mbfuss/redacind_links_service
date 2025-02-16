@@ -12,7 +12,7 @@ type Config struct {
 }
 
 var (
-	configPath string = "../../cfg/conf.env"
+	configPath = "cfg/conf.env"
 )
 
 //Config – это структура, которая содержит настройки (например, Port).
@@ -21,9 +21,11 @@ var (
 
 // Load - возвращает структуру со значениями из конфиг файла.
 func Load() *Config {
+	cwd, _ := os.Getwd()
+	fmt.Println("Текущая директория:", cwd)
 	err := godotenv.Load(configPath)
 	if err != nil {
-		fmt.Println("Error loading .env file")
+		fmt.Printf("Ошибка чтения конфигурационного файла: %v\n", err)
 	}
 	port := os.Getenv("PORT")
 	if port == "" {
