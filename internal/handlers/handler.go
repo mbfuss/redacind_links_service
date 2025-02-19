@@ -18,5 +18,9 @@ func New(sh shortener.Shortener) *Handler {
 // RegisterHandlers - регистрации обработчиков HTTP-запросов.
 func (h *Handler) RegisterHandlers(mux *http.ServeMux) {
 	mux.HandleFunc("/", h.AbbreviateLinks)
-	mux.HandleFunc("/{id}", h.GoReduceLink)
+}
+
+// Основной обработчик, распределяющий запросы по методам
+func Distributor() {
+
 }
