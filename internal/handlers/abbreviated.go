@@ -8,7 +8,7 @@ import (
 )
 
 func (h *Handler) AbbreviateLinks(res http.ResponseWriter, req *http.Request) {
-	err := utils.VerificationRequest(http.MethodPost, "text/plain", res, req)
+	err := utils.VerificationRequest("text/plain", res, req)
 	if err != nil {
 		http.Error(res, fmt.Sprintf("Произошла ошибка: %v", err), http.StatusBadRequest)
 		return
@@ -22,6 +22,7 @@ func (h *Handler) AbbreviateLinks(res http.ResponseWriter, req *http.Request) {
 	originUrl := string(body)
 	if originUrl == "" {
 		http.Error(res, "Тело запроса не может быть пустым", http.StatusBadRequest)
+		return
 	}
 	h.sh.ShortenJoin(originUrl)
 }

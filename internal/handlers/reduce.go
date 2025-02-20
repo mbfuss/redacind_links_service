@@ -7,7 +7,7 @@ import (
 )
 
 func (h *Handler) GoReduceLink(res http.ResponseWriter, req *http.Request) {
-	err := utils.VerificationRequest(http.MethodGet, "text/plain", res, req)
+	err := utils.VerificationRequest("text/plain", res, req)
 	if err != nil {
 		http.Error(res, fmt.Sprintf("Произошла ошибка: %v", err), http.StatusBadRequest)
 		return
