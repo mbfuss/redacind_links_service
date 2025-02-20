@@ -7,7 +7,7 @@
 Пример запроса к серверу:
 POST / HTTP/1.1
 Host: localhost:8080
-Content-Type: text/plain
+Content-Type: text/plain/
 https://practicum.yandex.ru/
 
 Пример ответа от сервера:
