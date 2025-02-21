@@ -7,6 +7,7 @@ import (
 	"net/http"
 )
 
+// AbbreviateLinks - отправляет оригинальный URL в хранилище.
 func (h *Handler) AbbreviateLinks(res http.ResponseWriter, req *http.Request) {
 	err := utils.VerificationRequest("text/plain", res, req)
 	if err != nil {

@@ -20,7 +20,7 @@ func (h *Handler) RegisterHandlers(mux *http.ServeMux) {
 	mux.HandleFunc("/", h.Distributor)
 }
 
-// Distributor - основной обработчик, распределяющий запросы.
+// Distributor - обработчик, распределяющий запросы для /.
 func (h *Handler) Distributor(res http.ResponseWriter, req *http.Request) {
 	if req.Method == http.MethodGet {
 		h.GoReduceLink(res, req)
