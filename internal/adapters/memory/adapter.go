@@ -31,5 +31,5 @@ func (ma *memoryAdapter) GetValueMemory(memoryKeyId string) (string, error) {
 // SetValueMemory - добавляет в хэш-таблицу информацию о сайте.
 func (ma *memoryAdapter) SetValueMemory(key string, value string) {
 	ma.memory.Urls[key] = value
-	log.Println("Успешно добавлено.")
+	log.Println("Key:", key, "| OriginURL:", value)
 }

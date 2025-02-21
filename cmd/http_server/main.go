@@ -2,10 +2,10 @@ package main
 
 import (
 	"1_increment_http_server/internal/adapters/memory"
+	"1_increment_http_server/internal/business/shortener"
 	"1_increment_http_server/internal/config"
 	"1_increment_http_server/internal/handlers"
 	"1_increment_http_server/internal/providers/memory_provider"
-	"1_increment_http_server/internal/service/shortener"
 	"fmt"
 	"log"
 	"net/http"
@@ -22,7 +22,10 @@ func main() {
 
 	mux := http.NewServeMux()
 
-	h := handlers.New(*shortener.New(*memory_provider.New(memory.New())))
+	ma := memory.New()
+	mp := memory_provider.New(ma)
+	sh := shortener.New(*mp)
+	h := handlers.New(*sh, *mp)
 	h.RegisterHandlers(mux)
 
 	fmt.Println("Запущен сервер на порту:", cfg.ResourceConfig.Port)
