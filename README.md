@@ -34,7 +34,7 @@ Location: https://practicum.yandex.ru/
 
 Разделение на слои
 
-cmd/ – точка входа, только инициализация сервера.
+cmd/ – точка входа, инициализация сервера.
 
 internal/handler/ – слой обработки HTTP-запросов (контроллеры).
 
@@ -44,21 +44,22 @@ internal/storage/ – слой работы с хранилищем данных
 
 url-shortener/
 │── cmd/
-│   └── server/
+│   └── http_server/
 │       └── main.go            # Точка входа
+│── cfg
+│   └── conf.env               # Конфигурационные данные сервера.о
 │── internal/
+│   │──
 │   ├── handler/
-│   │   ├── shorten.go         # Обработчик сокращения URL
-│   │   ├── redirect.go        # Обработчик редиректа
+│   │   ├── reduce.go         # Обработчик для получения оригинального URL.
+│   │   ├── abbreviated.go        # Обработчик редиректа
 │   │   └── handler.go         # Регистрация обработчиков
-│   ├── storage/
+│   ├── resource/
 │   │   ├── memory.go          # Временное хранилище (карта)
-│   │   ├── storage.go         # Интерфейс хранилища
-│   └── service/
-│       ├── shortener.go       # Логика сокращения URL
-│── pkg/
-│   ├── logger/
-│   │   └── logger.go          # Логирование
+│   │   ├── config.go          # Структура для хранения конфигурационных данных. 
+│   └── business/
+│       ├── shortener       
+│            └── shortener.go   # Логика сокращения URL
 │── config/
 │   └── config.go              # Конфигурация (порт, БД и т. д.)
 │── go.mod                     # Модуль Go
