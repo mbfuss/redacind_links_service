@@ -20,7 +20,7 @@ var (
 //&Config{Port: "8080"} – создаёт объект Config и возвращает его адрес.
 
 // Load - возвращает структуру со значениями из конфиг файла.
-func Load() *Config {
+func (c *Config) Load() *Config {
 	cwd, _ := os.Getwd()
 	fmt.Println("Текущая директория:", cwd)
 	err := godotenv.Load(configPath)
