@@ -28,6 +28,7 @@ Location: https://practicum.yandex.ru/
 
 **Архитектура проекта:**
 
+```
 url-shortener/
 │── cmd/
 │   └── http_server/
@@ -66,3 +67,4 @@ url-shortener/
 │── go.mod                     # Модуль Go.
 │── go.sum                     # Зависимости.
 └──  README.md                  # Документация.
+```
