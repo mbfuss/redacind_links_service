@@ -20,9 +20,10 @@ func New(mp memory_provider.MemoryProvider) *Shortener {
 }
 
 // ShortenJoin - функция для объединения полного url с коротким.
-func (s *Shortener) ShortenJoin(url string) {
+func (s *Shortener) ShortenJoin(url string) string {
 	shortenLink := randStr(6)
 	s.mp.SetValueMemory(shortenLink, url)
+	return shortenLink
 }
 
 // randStr - функция генерации случайного короткого адреса.
