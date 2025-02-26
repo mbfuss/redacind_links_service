@@ -23,12 +23,12 @@ func (a *App) Initialize() {
 			log.Fatalf("Произошла паника в приложении: %s\n", err)
 		}
 	}()
-
+	cfg := a.cfg.Load()
 	a.mux = http.NewServeMux()
 	ma := memory.New()
 	mp := memory_provider.New(ma)
 	sh := shortener.New(*mp)
-	h := handlers.New(*sh, *mp)
+	h := handlers.New(*sh, *mp, *cfg)
 	h.RegisterHandlers(a.mux)
 }
 

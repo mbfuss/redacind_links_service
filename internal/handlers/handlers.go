@@ -2,19 +2,22 @@ package handlers
 
 import (
 	"1_increment_http_server/internal/business/shortener"
+	"1_increment_http_server/internal/config"
 	"1_increment_http_server/internal/providers/memory_provider"
 	"net/http"
 )
 
 type Handler struct {
-	sh shortener.Shortener
-	mp memory_provider.MemoryProvider
+	sh  shortener.Shortener
+	mp  memory_provider.MemoryProvider
+	cfg config.Config
 }
 
-func New(sh shortener.Shortener, mp memory_provider.MemoryProvider) *Handler {
+func New(sh shortener.Shortener, mp memory_provider.MemoryProvider, cfg config.Config) *Handler {
 	return &Handler{
-		sh: sh,
-		mp: mp,
+		sh:  sh,
+		mp:  mp,
+		cfg: cfg,
 	}
 }
 

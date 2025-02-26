@@ -25,8 +25,9 @@ func (h *Handler) AbbreviateLinks(res http.ResponseWriter, req *http.Request) {
 		http.Error(res, "Тело запроса не может быть пустым", http.StatusBadRequest)
 		return
 	}
+
 	shorten := h.sh.ShortenJoin(originUrl)
 
 	res.WriteHeader(http.StatusCreated)
-	res.Write([]byte(shorten))
+	res.Write([]byte(h.cfg.ResourceConfig.Host + ":" + h.cfg.ResourceConfig.Port + "/" + shorten))
 }

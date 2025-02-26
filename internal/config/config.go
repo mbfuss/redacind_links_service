@@ -28,6 +28,7 @@ func (c *Config) Load() *Config {
 		fmt.Printf("Ошибка чтения конфигурационного файла: %v\n", err)
 	}
 	port := os.Getenv("PORT")
+	host := os.Getenv("HOST")
 	if port == "" {
 		fmt.Println("Будет установлен порт по умолчанию: 8080")
 		port = "8080"
@@ -35,6 +36,7 @@ func (c *Config) Load() *Config {
 	return &Config{
 		ResourceConfig: resource.Config{
 			Port: port,
+			Host: host,
 		},
 	}
 }
