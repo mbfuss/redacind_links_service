@@ -21,6 +21,6 @@ func (h *Handler) GoReduceLink(res http.ResponseWriter, req *http.Request) {
 		http.Error(res, fmt.Sprintf("Произошла ошибка: %v", err), http.StatusBadRequest)
 		return
 	}
-
+	res.WriteHeader(http.StatusTemporaryRedirect)
 	res.Write([]byte(originURl))
 }
