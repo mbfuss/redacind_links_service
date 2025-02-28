@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strconv"
 )
 
 // AbbreviateLinks - отправляет оригинальный URL в хранилище и связывает его с укороченным.
@@ -26,8 +27,8 @@ func (h *Handler) AbbreviateLinks(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	shorten := h.sh.ShortenJoin(originUrl)
-
+	responseData := h.cfg.ResourceConfig.Host + ":" + h.cfg.ResourceConfig.Port + "/" + h.sh.ShortenJoin(originUrl)
+	res.Header().Set("Content-Length", strconv.Itoa(len(responseData)))
 	res.WriteHeader(http.StatusCreated)
-	res.Write([]byte(h.cfg.ResourceConfig.Host + ":" + h.cfg.ResourceConfig.Port + "/" + shorten))
+	res.Write([]byte(responseData))
 }
