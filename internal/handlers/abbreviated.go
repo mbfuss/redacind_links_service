@@ -27,7 +27,7 @@ func (h *Handler) AbbreviateLinks(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	responseData := h.cfg.ResourceConfig.Host + ":" + h.cfg.ResourceConfig.Port + "/" + h.sh.ShortenJoin(originUrl)
+	responseData := "http://" + h.cfg.ResourceConfig.Host + ":" + h.cfg.ResourceConfig.Port + "/" + h.sh.ShortenJoin(originUrl)
 	res.Header().Set("Content-Length", strconv.Itoa(len(responseData)))
 	res.WriteHeader(http.StatusCreated)
 	res.Write([]byte(responseData))
